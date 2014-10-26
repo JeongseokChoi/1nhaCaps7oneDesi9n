@@ -51,7 +51,7 @@ public class CustomTrackableEventHandler : MonoBehaviour,
         }
         else
         {
-            //OnTrackingLost();
+            OnTrackingLost();
         }
     }
 
@@ -84,7 +84,7 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 
 
     private void OnTrackingLost()
-    {
+    {/*
         Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
         Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 
@@ -101,7 +101,8 @@ public class CustomTrackableEventHandler : MonoBehaviour,
         }
 
         Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
-    }
+    */
+	}
 
     #endregion // PRIVATE_METHODS
 }

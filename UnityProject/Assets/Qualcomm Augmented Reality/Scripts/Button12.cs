@@ -5,13 +5,13 @@ public class Button12 : MonoBehaviour {
 
 	public string password;
 
-	private float x, y;
+	//private float x, y;
 
 	// Use this for initialization
 	void Start () {
 		password = "";
-		x = this.transform.position.x;
-		y = this.transform.position.y;
+		//x = this.transform.position.x;
+		//y = this.transform.position.y;
 	}
 	
 	// Update is called once per frame

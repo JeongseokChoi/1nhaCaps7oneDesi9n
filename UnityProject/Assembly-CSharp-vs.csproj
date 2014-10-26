@@ -58,6 +58,7 @@
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\Button7.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\Button8.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\Button9.cs" />
+     <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\Buttons.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\CloudRecoBehaviour.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\CustomTrackableEventHandler.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\CylinderTargetBehaviour.cs" />

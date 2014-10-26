@@ -15,6 +15,6 @@ public class Button11 : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		InputQueue.queue.Enqueue (11);
+		InputQueue.queue.Enqueue (0);
 	}
 }
