@@ -33,6 +33,9 @@ public class Button12 : MonoBehaviour {
 			while (InputQueue.queue.Count > 0)
 					password += ((int)(InputQueue.queue.Dequeue ())).ToString ();
 			Debug.Log (password);
+
+			// Testing
+			AesEncryption.encrypt (password);
 		}
 	}
 }

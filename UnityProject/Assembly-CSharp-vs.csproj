@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\AesEncryption.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\Button1.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\Button10.cs" />
      <Compile Include="Assets\Qualcomm Augmented Reality\Scripts\Button11.cs" />
