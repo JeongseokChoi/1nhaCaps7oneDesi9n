@@ -5,6 +5,7 @@ Confidential and Proprietary - Qualcomm Connected Experiences, Inc.
 ==============================================================================*/
 
 using UnityEngine;
+using System.Timers;
 
 /// <summary>
 /// A custom handler that implements the ITrackableEventHandler interface.
@@ -32,11 +33,11 @@ public class CustomTrackableEventHandler : MonoBehaviour,
     
     void Start()
     {
-        mTrackableBehaviour = GetComponent<TrackableBehaviour>();
-        if (mTrackableBehaviour)
-        {
-            mTrackableBehaviour.RegisterTrackableEventHandler(this);
-        }
+		mTrackableBehaviour = GetComponent<TrackableBehaviour>();
+		if (mTrackableBehaviour)
+		{
+			mTrackableBehaviour.RegisterTrackableEventHandler(this);
+		}
 
 		
 		// MENU_NUMBER random setting
@@ -55,7 +56,8 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 			}
 			
 			temp[i] = random_result;
-			
+
+
 		}
 
 		for (i=0; i<10; i++) {	
@@ -74,10 +76,26 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 			else if( temp[i] == 7 || temp[i] == 8 || temp[i] == 9 ) menu_object[i].transform.position = new Vector3(temp_X, temp_Y, 0.0f);
 			else if( temp[i] == 0 ) menu_object[i].transform.position = new Vector3(temp_X, temp_Y, -180.0f);
 		}
+
+		BtConnector.moduleMAC ("10:14:06:16:08:35");
+		if (BtConnector.isBluetoothEnabled () == false)
+			BtConnector.askEnableBluetooth ();
     }
 
     #endregion // UNTIY_MONOBEHAVIOUR_METHODS
 
+
+	//DEBUG
+	/*
+	void OnGUI(){
+		if(GUI.Button(new Rect(0, 0,Screen.width * 0.1f, Screen.height * 0.05f), "Connect"))
+		{
+			if (!BtConnector.isBluetoothEnabled ()){
+				BtConnector.askEnableBluetooth();
+			} else BtConnector.connect();
+		}
+	}
+	*/
 
     #region PUBLIC_METHODS
 
@@ -93,10 +111,17 @@ public class CustomTrackableEventHandler : MonoBehaviour,
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
+			if (BtConnector.isConnected() == false)
+				BtConnector.connect();
+
             OnTrackingFound();
         }
         else
         {
+			/*
+			if (BtConnector.isConnected() == false)
+				BtConnector.connect();
+			*/
 			if (firstDetected == false)
 			{
 				OnTrackingLost();

@@ -10,6 +10,7 @@ public class Button12 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		password = "";
+
 		//x = this.transform.position.x;
 		//y = this.transform.position.y;
 	}
@@ -34,8 +35,15 @@ public class Button12 : MonoBehaviour {
 					password += ((int)(InputQueue.queue.Dequeue ())).ToString ();
 			Debug.Log (password);
 
-			// Testing
-			AesEncryption.encrypt (password);
+			if (password != "")
+			{
+				//
+				//byte[] cipher = AesEncryption.encrypt (password);
+				//
+
+				if (BtConnector.isConnected())
+					BtConnector.sendString(password);
+			}
 		}
 	}
 }

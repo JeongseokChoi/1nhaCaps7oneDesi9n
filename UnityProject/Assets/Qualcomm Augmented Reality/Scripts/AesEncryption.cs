@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 
 public class AesEncryption {
 
-	public static string encrypt(string password)
+	public static byte[] encrypt(string password)
 	{
 		byte[] cipher;
 		using (Aes aes = Aes.Create ())
@@ -14,10 +14,11 @@ public class AesEncryption {
 			cipher = EncryptStringToBytes_Aes(password, aes.Key, aes.IV);
 
 			// For debug
+			Debug.Log (aes.KeySize);
 			Debug.Log (DecryptStringFromBytes_Aes(cipher, aes.Key, aes.IV));
 		}
 
-		return cipher.ToString ();
+		return cipher;
 	}
 
 	static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
