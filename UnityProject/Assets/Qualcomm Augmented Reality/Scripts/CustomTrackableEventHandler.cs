@@ -16,7 +16,7 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 	bool firstDetected = false;
 
 	int i=0, j, random_result;
-	int[] temp = new int[10]; // 
+	int[] temp = new int[10];
 	bool bool_tmp = false;
 	
 	public GameObject[] menu_object = new GameObject[10];
@@ -54,10 +54,7 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 					}
 				}
 			}
-			
 			temp[i] = random_result;
-
-
 		}
 
 		for (i=0; i<10; i++) {	
@@ -104,8 +101,8 @@ public class CustomTrackableEventHandler : MonoBehaviour,
     /// tracking state changes.
     /// </summary>
     public void OnTrackableStateChanged(
-                                    TrackableBehaviour.Status previousStatus,
-                                    TrackableBehaviour.Status newStatus)
+		TrackableBehaviour.Status previousStatus,
+		TrackableBehaviour.Status newStatus)
     {
         if (newStatus == TrackableBehaviour.Status.DETECTED ||
             newStatus == TrackableBehaviour.Status.TRACKED ||
@@ -118,10 +115,6 @@ public class CustomTrackableEventHandler : MonoBehaviour,
         }
         else
         {
-			/*
-			if (BtConnector.isConnected() == false)
-				BtConnector.connect();
-			*/
 			if (firstDetected == false)
 			{
 				OnTrackingLost();
