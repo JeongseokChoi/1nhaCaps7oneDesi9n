@@ -1,11 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Qualcomm Augmented Reality\Scripts\CustomTrackableEventHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Qualcomm Augmented Reality\Scripts\Button12.cs">
     <Files>
-      <File FileName="Assets\Qualcomm Augmented Reality\Scripts\CustomTrackableEventHandler.cs" Line="116" Column="4" />
-      <File FileName="Assets\Android Microcontroller Bluetooth\2.X users should read me.txt" Line="1" Column="1" />
-      <File FileName="Assets\Qualcomm Augmented Reality\Scripts\Button12.cs" Line="45" Column="39" />
-      <File FileName="Assets\Android Microcontroller Bluetooth\Demos\Basic Demo\BasicDemo.cs" Line="28" Column="12" />
+      <File FileName="Assets\Qualcomm Augmented Reality\Scripts\Button12.cs" Line="119" Column="7" />
+      <File FileName="Assets\Qualcomm Augmented Reality\Scripts\Button13.cs" Line="36" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -5,12 +5,14 @@ using System.IO;
 using System.Security.Cryptography;
 
 public class AesEncryption {
-
 	public static byte[] encrypt(string password)
 	{
 		byte[] cipher;
 		using (Aes aes = Aes.Create ())
 		{
+			aes.Mode = CipherMode.ECB;
+			aes.Key = new byte[]
+				{00, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15};
 			cipher = EncryptStringToBytes_Aes(password, aes.Key, aes.IV);
 
 			// For debug
