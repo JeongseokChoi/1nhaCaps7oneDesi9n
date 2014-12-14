@@ -2,124 +2,101 @@
 using System.Collections;
 
 public class Button12 : MonoBehaviour {
-
+	
 	public string password;
 	public static string change_password;
 	public static string change_password_confirm;
-
-	public static bool b_confirmPW = false;
-	public static bool b_changePW_confirm = false;
-
-	//private float x, y;
+	
+	public static bool b_pw = false;
+	public static bool b_checkPw = false;
+	
 	
 	// Use this for initialization
 	void Start () {
-
+		
 		password = "";
 		change_password = "";
 		change_password_confirm = "";
-		//x = this.transform.position.x;
-		//y = this.transform.position.y;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//		password = "";
-		//		if (Input.GetMouseButtonDown (0)) {
-		//			while (InputQueue.queue.Count > 0)
-		//				password += ((int)(InputQueue.queue.Dequeue ())).ToString ();
-		//			Debug.Log (password);
-		//		}
-	}
 
+	}
+	
 	void OnMouseDown() {
 		if (InputQueue.queue.Count != 4) {
 			InputQueue.queue.Clear ();
 			return;
 		}
-
+		
 		password = "";
-		if ( Button13.b_changePW == false)
+		if ( Button13.b_changePw == false)
 		{
+            // 비번 입력 , password
 			if (Input.GetMouseButtonDown (0)) {
 				while (InputQueue.queue.Count > 0) {
 					password += ((int)(InputQueue.queue.Dequeue ())).ToString ();
-					Debug.Log (password);
 				}
-				Debug.Log ("비번입력");
-				Debug.Log ("password");
-				Debug.Log (password);
 			}
-
+			
 			BtConnector.sendString(password);
 		}
 		else
 		{
-			if( b_changePW_confirm == false ){
+            // 비번바꾸기_비번확인, password
+			if( b_checkPw == false ){
 				if (Input.GetMouseButtonDown (0)) {
 					while (InputQueue.queue.Count > 0) {
 						password += ((int)(InputQueue.queue.Dequeue ())).ToString ();
-						Debug.Log (InputQueue.queue);
 					}
-					Debug.Log ("비번바꾸기_비번확인");
-					Debug.Log ("password");
-					Debug.Log (password);
 				}
-
+				
 				BtConnector.sendString(password);
-
-				b_changePW_confirm = true;
+				
+				b_checkPw = true;
 			}
-			else{
-				if( b_confirmPW == false ){
+			else{   // 비번확인 후
+                // 비번 변경, change_password
+				if( b_pw == false ){
 					if (Input.GetMouseButtonDown (0)) {
 						while (InputQueue.queue.Count > 0) {
 							change_password += ((int)(InputQueue.queue.Dequeue ())).ToString ();
-							Debug.Log (InputQueue.queue);
 						}
-						Debug.Log ("비번바꾸기");
-						Debug.Log ("change_password");
-						Debug.Log (change_password);
 					}
-					b_confirmPW = true;
+					b_pw = true;
 				}
+                // 비번 변경 재입력 change_password_confirm
 				else {
 					if (Input.GetMouseButtonDown (0)) {
 						while (InputQueue.queue.Count > 0) {
 							change_password_confirm += ((int)(InputQueue.queue.Dequeue ())).ToString ();
-							Debug.Log (InputQueue.queue);
 						}
-						Debug.Log ("비번바꾸기확인");
-						Debug.Log ("change_password_confirm");
-						Debug.Log (change_password_confirm);
 					}
 					
 					// 비번 같은지 확인
 					if( change_password == change_password_confirm){
-						password = change_password_confirm;
-						Debug.Log ("같다");
-						b_confirmPW = false;
-						Button13.b_changePW = false;
-						change_password = "";
-						change_password_confirm = "";
-						b_changePW_confirm = true;
-
+                        // 두번 입력한 비밀번호가 같으면 password 전송
+						password = change_password_confirm;					
 						BtConnector.sendString(password);
-
+						
 					}
 					else{
-						Debug.Log ("다르다");
-						b_confirmPW = false;
-						Button13.b_changePW = false;
-						change_password = "";
-						change_password_confirm = "";
-						b_changePW_confirm = true;
-
+                        // 두번 입력한 비밀번호가 다르면 "bcde" 전송					
 						BtConnector.sendString("bcde");
-
 					}
+
+                    // 초기화
+                    InputQueue.queue.Clear();
+                    b_pw = false;
+                    b_checkPw = true;
+                    Button13.b_changePw = false;
+                    change_password = "";
+                    change_password_confirm = "";
 				}
 			}
 		}
 	}
 }
+

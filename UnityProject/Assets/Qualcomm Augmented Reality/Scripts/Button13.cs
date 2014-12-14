@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Button13 : MonoBehaviour {
-
-	public static bool b_changePW = false;
+	
+	public static bool b_changePw = false;
 	//public GameObject Object_changePW = new GameObject(); 
 	
 	
@@ -22,30 +22,31 @@ public class Button13 : MonoBehaviour {
 		//this.transform.position = new Vector3 (x, y, 0.6533f);
 		
 		if (Input.GetMouseButtonDown (0)) {
-			if( b_changePW == false ){
 
+            // 비밀번호가 입력모드 일 때 Button13(비밀번호변경버튼)이 클릭되면
+            if (b_changePw == false)
+            {
+                // "abcd" 전송, b_changePw 변경
 				BtConnector.sendString ("abcd");
-
-				b_changePW = true;
-				Button12.b_changePW_confirm = false;
-				Debug.Log ("SettingPassword");
-				Debug.Log (b_changePW);
-				// normal : false, SettingPassword : true
+				b_changePw = true;
 			}
-			else{
-
-				BtConnector.sendString ("bcde");
-
-				InputQueue.queue.Clear ();
-				b_changePW = false;
-				Button12.b_confirmPW = false;
-				Button12.change_password = "";
-				Button12.change_password_confirm = "";
-				Button12.b_changePW_confirm = false;
-				Debug.Log ("SettingPassword");
-				Debug.Log (b_changePW);
+            // 비밀번호가 변경모드 일 때 Button13(비밀번호변경버튼)이 클릭되면
+            else
+            {
+				// "bcde" 전송, b_changePw 변경
+                BtConnector.sendString ("bcde");
+				b_changePw = false;
 			}
+
+            // 비밀번호 변경 버튼 누를 때마다 Queue, bool값과 변수 초기화
+            InputQueue.queue.Clear();
+            Button12.b_pw = false;
+            Button12.b_checkPw = false;
+            Button12.change_password = "";
+            Button12.change_password_confirm = "";
+
 		}
-
+		
 	}
 }
+
